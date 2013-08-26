@@ -14,15 +14,13 @@ object Server extends App {
  
   def handler(req: HttpRequest): HttpResponse = {
     req.getUri() match {
-    	case "/" => {
-          return new DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK)
-        }
+    	case "/" =>  new DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK)
         case "/hello" => { 
         	val response = new DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK)
         	response.setContent(ChannelBuffers.copiedBuffer("Hello, World!", Charset.forName("UTF-8")))     
         	response
         }
-        case _ => return new DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.BAD_REQUEST)
+        case _ => new DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.BAD_REQUEST)
      }
   }
   
